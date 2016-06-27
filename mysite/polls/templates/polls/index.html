@@ -1,9 +1,32 @@
+{% extends 'polls/template.html' %}
+{% block content %}
+
+<h1>Another brick in the wall</h1>
 {% if latest_question_list %}
     <ul>
     {% for question in latest_question_list %}
-       <li><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></li>
+        {% if question.choice_set.count != 0 %}
+       <li><h3><i><a href="{% url 'polls:detail' question.id %}">{{ question.question_text }}</a></i></h3></li>
+            </br></br></br>
+        {%  endif %}
     {% endfor %}
-    </ul>
+   </ul>
 {% else %}
     <p>No polls are available.</p>
 {% endif %}
+
+
+
+  ______________________________________________<BR><BR>
+{#   {{ split_question_as_list.latest_question_list.0 }}#}
+     {% for question in latest_question_list %}
+         {% with 'Hey' as name %}
+{#             {{ question.question_text }}#}
+             {%  if name.lower in question.question_text.lower %}
+                 <br>
+                      <p> "{{ question.question_text }}" >>> <b>{{ name.upper }}</b>,<i> [FOUND]</i></p><br>
+             {% endif %}
+         {% endwith %}
+    {% endfor %}
+{% endblock %}
+

@@ -1,0 +1,15 @@
+{% load staticfiles %}
+<html lang="en">
+<head>
+
+    <link href="{% static "polls/bootstrap/css/bootstrap.css" %}" rel="stylesheet">
+    <link rel="stylesheet" type="text/css" href="{% static 'polls/styles.css' %}" >
+    <script src="{% static "polls/bootstrap/js/bootstrap.js" %}"></script>
+</head>
+<body>
+    {% block content %}
+
+    {% endblock %}
+
+</body>
+</html>

@@ -1,0 +1,13 @@
+li a {
+    color: green;
+}
+
+body{
+    margin: 50px;
+    background: white url("images/bg.jpg") repeat right bottom;
+}
+
+#404{
+    margin: 50px;
+    background: url("images/chiliktolik.jpg");
+}

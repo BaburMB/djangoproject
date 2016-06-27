@@ -1,12 +1,19 @@
+{% extends 'polls/template.html' %}
+{% block content %}
+     <h1> <a href="{% url "polls:index" %}" ><span class="label label-info">Home</span></a></h1>
 <h1>{{ question.question_text }}</h1>
 
-{% if error_message %}<p><strong>{{ error_message }}</strong></p>{% endif %}
+{% if error_message %}<div class="alert alert-danger"> <p><strong>{{ error_message }}</strong></p> </div>{% endif %}
 
 <form action="{% url 'polls:vote' question.id %}" method="post">
 {% csrf_token %}
 {% for choice in question.choice_set.all %}
+    <li class="list-group-item">
     <input type="radio" name="choice" id="choice{{ forloop.counter }}" value="{{ choice.id }}" />
-    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label><br />
+    <label for="choice{{ forloop.counter }}">{{ choice.choice_text }}</label>
+    </li>
 {% endfor %}
-<input type="submit" value="Vote" />
+<br>
+<input type="submit" value="Vote" class="btn btn-primary"/>
 </form>
+{% endblock %}
